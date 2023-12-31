@@ -1,0 +1,61 @@
+# Define a list of questions and answers
+questions = [
+    {
+        "question": " Which is the longest river in the world?",
+        "options": ["Niger", "Great Ganga", "Amazon", "Nile"],
+        "correct_answer": "Nile"
+    },
+    {
+        "question": " Which is the longest river in the world?",
+        "options": ["Param8000", "param800", "param800", "param8"],
+        "correct_answer": "param8000"
+    },
+    {
+        "question": "What is the largest mammal in the world?",
+        "options": ["Elephant", "Giraffe", "Blue Whale", "Hippopotamus"],
+        "correct_answer": "Blue Whale"
+    },
+
+    {
+        "question": "Which is the 29th state of India?",
+        "options": ["Uttarakhand", "Uttar Pradesh", "Telangana", "Madhya Pradesh"],
+        "correct_answer":"Telangana"        
+    }
+
+
+
+
+
+]
+
+
+
+# Initialize a variable to keep track of the score
+score = 0
+
+# Function to ask a question and check the answer
+def ask_question(question_data):
+    print(question_data["question"])
+    for i, option in enumerate(question_data["options"], start=1):
+        print(f"{i}. {option}")
+    
+    user_answer = input("Enter the number of your answer (1, 2, 3, 4): ")
+    if user_answer.isnumeric():
+        user_answer = int(user_answer)
+        if 1 <= user_answer <= 4:
+            if question_data["options"][user_answer - 1] == question_data["correct_answer"]:
+                print("Correct!\n")
+                return True
+            else:
+                print(f"Sorry, the correct answer is {question_data['correct_answer']}\n")
+                return False
+    print("Invalid input. Please enter a number between 1 and 4.\n")
+    return False
+
+# Main quiz loop
+for question in questions:
+    if ask_question(question):
+        score += 1
+
+# Display the final score
+print(f"Quiz complete! You got {score}/{len(questions)} questions correct.")
